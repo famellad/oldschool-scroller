@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1314125154 source:f:\solarstrings_sprite_rotater\font.c
+	<stdlib.h>
+	<string.h>
+	"SDL/SDL.h"
+	"SDL_image.h"
+	"gfx.h"
+	"font.h"
+
+1314123310 f:\solarstrings_sprite_rotater\gfx.h
+
+1314065968 f:\solarstrings_sprite_rotater\font.h
+
+1314125262 source:f:\solarstrings_sprite_rotater\gfx.c
+	<math.h>
+	"SDL/SDL.h"
+	"SDL_image.h"
+	"gfx.h"
+
+1314066806 source:f:\solarstrings_sprite_rotater\scale2x.c
+	"scale2x.h"
+
+1314069631 f:\solarstrings_sprite_rotater\scale2x.h
+	"SDL/SDL.h"
+
+1284812970 source:f:\solarstrings_sprite_rotater\scandir.c
+	<dirent.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+
+1314125290 source:f:\solarstrings_sprite_rotater\spriterotate.c
+	"SDL/SDL.h"
+	"SDL_image.h"
+	"IMG_savepng.h"
+	"gfx.h"
+	"scale2x.h"
+	"dirent.h"
+	"font.h"
+	"scandir.h"
+
+1288933236 f:\solarstrings_sprite_rotater\img_savepng.h
+
+1284812970 f:\solarstrings_sprite_rotater\scandir.h
+
+1288961710 source:f:\solarstrings_sprite_rotater\img_savepng.c
+	<stdlib.h>
+	<SDL/SDL.h>
+	<SDL/SDL_byteorder.h>
+	<png.h>
+	"IMG_savepng.h"
+

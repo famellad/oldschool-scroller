@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="IMG_savepng.c" open="1" top="1" tabpos="4">
+		<Cursor position="2629" topLine="76" />
+	</File>
+	<File name="font.c" open="1" top="0" tabpos="2">
+		<Cursor position="338" topLine="0" />
+	</File>
+	<File name="gfx.c" open="1" top="0" tabpos="3">
+		<Cursor position="7007" topLine="269" />
+	</File>
+	<File name="spriterotate.c" open="1" top="0" tabpos="1">
+		<Cursor position="9310" topLine="351" />
+	</File>
+</CodeBlocks_layout_file>

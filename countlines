@@ -1,0 +1,5 @@
+#!/bin/bash
+WCOUT=$(cat $(du -a | awk '{print $2}' | grep '\.lua') | wc)
+
+echo $WCOUT | awk '{print "Lines: "$1 }'
+echo $WCOUT | awk '{print "Words: "$2 }'
