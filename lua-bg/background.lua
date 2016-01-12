@@ -23,7 +23,7 @@ function Background:update (dt)
 
   -- We parallax the background relative to the player position
   -- TODO THESE VALUES ARE EMPIRICAL AND PROBABLY CAN BE OPTIMISED
-  self.x = width - game.gs.player.x * self.vx - 200
+  self.x = width - game.gs.player.x * self.vx - 198
 
   -- If the background is out of bounds, then we scroll it background
   if self.y >= self.img:getHeight() then
@@ -41,10 +41,11 @@ end
 -- Function to obtain a new random background
 -- Probably DEPRECATED
 function Background.getNew()
-  local rback = math.random(2)
+  --[[local rback = math.random(2)
   if rback == 1 then
     return BackNebula()
   elseif rback == 2 then
     return BackEagle()
-  end
+  end]]
+  return BackSimu()
 end

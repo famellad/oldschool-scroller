@@ -8,7 +8,7 @@ function ExplosionMed:init(x, y)
   self.w = 32
   self.h = 32
 
-  self.r = math.random(1, 20) / 10
+  self.r = 0--math.random(1, 20) / 10
 
   self.emitter = EmitterExplosion(x, y)
 
@@ -23,6 +23,8 @@ function ExplosionMed:update(dt, i)
 end
 
 function ExplosionMed:draw()
+  love.graphics.setBlendMode("alpha")
   Explosion.draw(self)
+  love.graphics.setBlendMode("alpha")
   self.emitter:draw()
 end
