@@ -2,6 +2,7 @@ Class = require 'libs.hump.class'
 
 Powerup = Class{}
 
+-- Prototype powerup class
 function Powerup:init(x, y)
   self.x = x
   self.y = y

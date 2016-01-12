@@ -2,9 +2,10 @@ Class = require 'libs.hump.class'
 
 Director = Class{}
 
+
 function Director:init(dif)
   self.difficulty = 0  -- Current Difficulty of the game
-  self.targetDif = dif -- Target difficulty
+  self.targetDif = dif -- Target difficulty, must be above 0
 
   self.currentChallenge = 1 -- Current challenge being placed
   -- 0: Resting
@@ -41,6 +42,7 @@ function Director:update(dt)
   self:doChallenge(dt) -- Do whatever challenge is all the rage
   self:updateEnemies(dt) -- Update enemies on screen
 
+  -- Reset difficulty timer
   if self.ddTimer < 0 then
     self.ddTimer = self.ddTimerMax
   end
@@ -66,7 +68,6 @@ function Director:updateEnemies(dt)
     enemy:update(dt)
 
     if enemy.y > height+enemy.radius then -- remove enemies out of bounds
-      --self:addDifficulty(-enemy.dif)
       table.remove(self.enemies, i)
     end
   end
@@ -92,6 +93,8 @@ function Director:doChallenge(dt)
     end
   end
 end
+
+-- TODO REDO ALL OF THESE AS CLASSES
 
 -- Challenges!!
 -- Resting
@@ -188,6 +191,7 @@ function Director:addDifficulty(ddif)
 end
 
 function Director:drawEnemies()
+  -- Iterate through all enemies to draw them
   for i, enemy in ipairs(self.enemies) do
     enemy:draw()
   end
