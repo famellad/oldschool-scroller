@@ -44,11 +44,6 @@ function guiDraw (player)
     love.graphics.print("Press START to try again", width/2-50, 30)
   end
 
-  love.graphics.setColor(25, 25, 26, 255)
-  love.graphics.rectangle("fill", realWidth, 0, 500, height)
-  love.graphics.rectangle("fill", -500, 0, 500, height)
-  love.graphics.setColor(255, 255, 255, 255)
-
   if game.paused and math.floor(t / 60) % 2 == 0 then
     love.graphics.print("GAME PAUSED", realWidth/2-50, 50)
   end

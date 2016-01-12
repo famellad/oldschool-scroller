@@ -50,6 +50,8 @@ function Explosion:init(x, y)
   self.w = 2
   self.h = 2
 
+  self.r = 0
+
   self.anim = newAnimation(love.graphics.newImage('gfx/nul.png'), 2, 2, 0.1, 0)
 
   table.insert(explosions, self)
@@ -65,8 +67,5 @@ function Explosion:update(dt, i)
 end
 
 function Explosion:draw()
-  local nx = math.floor(self.x - self.w / 2)
-  local ny = math.floor(self.y - self.h / 2)
-
-  self.anim:draw(nx, ny)
+  self.anim:draw(self.x, self.y, self.r, 1, 1, self.w / 2, self.h / 2)
 end

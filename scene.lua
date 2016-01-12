@@ -7,7 +7,7 @@ Scene = Class{}
 -- These definitions are just an interface
 
 function Scene:init()
-
+  self.state = 0
 end
 
 function Scene:update(dt)

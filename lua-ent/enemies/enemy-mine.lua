@@ -25,7 +25,7 @@ end
 
 function EnemyMine:doAI(dt)
   -- self.anim:update(dt)
-  if game.isAlive then
+  if game.gs.isAlive then
     local gpx = game.gs.player.x
     local gpy = game.gs.player.y
     local d2 = d2(self.x, self.y, gpx, gpy)

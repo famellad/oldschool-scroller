@@ -1,14 +1,19 @@
 -- Load libs
-require("libs.AnAL")
+require("libs.AnAL") -- Library for animations (is there another one?)
 
 -- Base classes
-require("game")
-require("static")
-require("controller")
-require("debug-print")
+require("game")        -- Basic game handling
+require("static")      -- Static functions and variables
+require("console")     -- Game console TODO
+require("debug-print") -- Debug output functions
+
+-- Load Controller classes
+require("lua-ctl/controller")      -- General controller class
+require("lua-ctl/controller-xbox") -- Xbox gamepad compat
 
 -- States and scenes
 require("game-state")
+require("lua-scenes.scene-title")
 
 -- Load Player
 require("lua-player.player")

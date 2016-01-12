@@ -10,6 +10,11 @@ function GameState:init ()
   self.isAlive = true  -- Whether the player is alive
   self.score = 0       -- Scoreboard
 
+  self.sVel = 0 -- Speed at which the stage is advancing
+
+  -- Load controller
+  self.controller = Controller()
+
   -- Load everything required for a new game
   -- Create the player entity and give'im a gun
   self.player = Player()
@@ -44,7 +49,7 @@ function GameState:update(dt)
       dt = dt * 0.3
     end
 
-    Controller.handleInput(self.player)
+    self.controller:handleInput(self.player)
 
     -- Create enemies and then update them
     self.dir:update(dt)

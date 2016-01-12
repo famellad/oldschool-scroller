@@ -8,6 +8,8 @@ function ExplosionMed:init(x, y)
   self.w = 32
   self.h = 32
 
+  self.r = math.random(1, 20) / 10
+
   self.emitter = EmitterExplosion(x, y)
 
   self.img = love.graphics.newImage('gfx/parts/explosion.png')

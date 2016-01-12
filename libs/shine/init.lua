@@ -31,7 +31,8 @@ shine.__index = shine
 function shine._render_to_canvas(_, canvas, func, ...)
 	local old_canvas = love.graphics.getCanvas()
 
-	canvas:clear()
+	--canvas:clear()
+  love.graphics.clear()
 	love.graphics.setCanvas(canvas)
 	func(...)
 
@@ -102,7 +103,7 @@ return setmetatable({}, {__index = function(self, key)
 
 	setmetatable(effect, shine)
 	for _, v in ipairs(effect.requires) do
-		if not love.graphics.isSupported(v) then
+		if not love.graphics.getSupported(v) then
 			error(v.." not supported by the graphics card", 2)
 		end
 	end

@@ -29,8 +29,6 @@ function Director:init(dif)
   -- Difficulty Determination Timers
   self.ddTimerMax = self.createEnemyTimerMax * 1.5
   self.ddTimer = self.ddTimerMax
-
-  music.tracks.feathers:play()
 end
 
 function Director:update(dt)

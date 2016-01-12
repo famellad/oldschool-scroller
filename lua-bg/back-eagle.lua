@@ -12,7 +12,5 @@ function BackEagle:update(dt)
 end
 
 function BackEagle:draw()
-  love.graphics.draw(self.img, math.floor(self.x), math.floor(self.y))
-  love.graphics.draw(self.img, math.floor(self.x), math.floor(self.y - self.img:getHeight()))
   BackSpaceProto.draw(self)
 end

@@ -59,9 +59,9 @@ function EnemyMedium:doAI(dt)
   end
 
   -- Check whether to shoot
-  local dist = game.player.y - self.y
+  local dist = game.gs.player.y - self.y
   if self.canShoot
-  and math.abs(game.player.x - self.x) < width / 8
+  and math.abs(game.gs.player.x - self.x) < width / 8
   and dist < height * 2/3 and dist > 0 then
     self:shoot()
   end
@@ -74,8 +74,8 @@ function EnemyMedium:shoot()
   -- Actually shoot
   newBullet1 = BulletHammer(self.x + self.w / 2, self.y + 10, 0, false)
   newBullet2 = BulletHammer(self.x - self.w / 2, self.y + 10, 0, false)
-  game.badBullets:addBullet(newBullet1)
-  game.badBullets:addBullet(newBullet2)
+  game.gs.badBullets:addBullet(newBullet1)
+  game.gs.badBullets:addBullet(newBullet2)
 end
 
 function EnemyMedium:draw()
