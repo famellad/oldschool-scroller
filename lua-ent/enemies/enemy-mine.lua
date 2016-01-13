@@ -20,31 +20,39 @@ function EnemyMine:init(x, y)
   self.h = 10
 
   self.img = love.graphics.newImage('gfx/sprites/mine.png')
+
+  -- The frames are as follows
+  -- 1: Dormant
+  -- 2: Engaging
+  -- 3: Standby
   self.anim = newAnimation(self.img, 10, 10, 1, 3)
 end
 
 function EnemyMine:doAI(dt)
-  -- self.anim:update(dt)
+  -- Only do AI if the player is alive...
   if game.gs.isAlive then
+    -- We get the player's position, and calculate distance to that
     local gpx = game.gs.player.x
     local gpy = game.gs.player.y
     local d2 = d2(self.x, self.y, gpx, gpy)
 
+    -- An arbitrary acceleration value is decided, 12 seems to do the trick
     local v = 12
 
+    -- If distance squared is less than 5500, the player is too close and shall be destroyed
     if  d2 < 5500 then
+      -- The engaging sprite is used
       self.anim:seek(2)
-      -- Find less expensive way to do this
+
+      -- The following is a pseudogravitational algorithm
       local dx = math.abs(self.x - gpx)
       local dy = math.abs(self.y - gpy)
-      --local th = math.atan2(dy, dx)
-      --local cost = math.cos(th) / d
-      --local sint = math.sin(th) / d
 
       self.engaged = true
 
       self:reachVelocity(5, dt)
 
+      -- TODO FURTHER OPTIMIZE THIS BY REMOVING THE NEED TO COMPARE AXES
       if self.x > gpx then
         self.x = self.x - v * dx / d2
       else
@@ -64,6 +72,7 @@ function EnemyMine:doAI(dt)
   end
 end
 
+-- This routine allows the enemy to reach a certain velocity smoothly
 function EnemyMine:reachVelocity(target, dt)
   if self.vy > target then
     self.vy = self.vy - 4*dt

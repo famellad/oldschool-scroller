@@ -28,6 +28,7 @@ require("lua-ent.enemy")                        -- Generic enemy
 require("lua-ent.enemies.enemy-asteroid")       -- Medium Asteroid
 require("lua-ent.enemies.enemy-asteroid-small") -- Small Asteroid
 require("lua-ent.enemies.enemy-medium")         -- Medium shooty enemy
+require("lua-ent.enemies.enemy-simu-med")       -- Medium simu shooty enemy
 require("lua-ent.enemies.enemy-mine")           -- Mine enemy
 require("lua-ent.powerup")                      -- Generic powerup that may be picked up
 require("lua-ent.powerups.powerup-hp")          -- Health powerup

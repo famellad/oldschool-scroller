@@ -14,6 +14,8 @@ function Background:init()
   -- TODO this image is too large, do the resizing thing
   self.img = love.graphics.newImage('gfx/back/back-black.png')
 
+  self.shadows = false -- Whether shadows should be drawn on this background
+
   self.event = 0 -- What's currently going on in the background
 end
 

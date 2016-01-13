@@ -7,7 +7,7 @@ function Director:init(dif)
   self.difficulty = 0  -- Current Difficulty of the game
   self.targetDif = dif -- Target difficulty, must be above 0
 
-  self.currentChallenge = 1 -- Current challenge being placed
+  self.currentChallenge = 4 -- Current challenge being placed
   -- 0: Resting
   -- 1: Asteroid field
   -- 2: Scattered enemies
@@ -82,7 +82,9 @@ function Director:doChallenge(dt)
     self:doChallengeScattered(dt)
   elseif self.currentChallenge == 3 then
     self:doChallengeMinefield(dt)
-  end
+  elseif self.currentChallenge == 4 then
+      self:doChallengeSimu1(dt)
+    end
 
   if self.currentChallenge > 0 then
     -- Do the challenge timer
@@ -141,6 +143,20 @@ function Director:doChallengeScattered(dt)
     self.createEnemyTimer = self.createEnemyTimerMax
 
     local newEnemy = EnemyMedium(math.random(20, width - 20), math.random(0, 10))
+    table.insert(self.enemies, newEnemy)
+    -- Add the difficulty to this enemy
+    --self:addDifficulty(newEnemy.dif)
+  end
+end
+
+-- Simushooties
+function Director:doChallengeSimu1(dt)
+  -- Check whether to make a new enemy on each tick of the timer
+  self.createEnemyTimer = self.createEnemyTimer - (1 * dt)
+  if self.createEnemyTimer < 0 and self.difficulty < self.targetDif then
+    self.createEnemyTimer = self.createEnemyTimerMax
+
+    local newEnemy = EnemySimuMed(math.random(20, width - 20), math.random(0, 10))
     table.insert(self.enemies, newEnemy)
     -- Add the difficulty to this enemy
     --self:addDifficulty(newEnemy.dif)

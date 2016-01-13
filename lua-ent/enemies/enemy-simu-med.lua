@@ -1,11 +1,11 @@
 Class = require 'libs.hump.class'
 
 -- All enemies must inherit from Enemy
-EnemyMedium = Class{__includes = Enemy}
+EnemySimuMed = Class{__includes = Enemy}
 
 -- This enemy is trash and basically a showcase of how intrincate (or simple)
 -- An AI routine can get, this one is rather simple though
-function EnemyMedium:init(x, sineTimer)
+function EnemySimuMed:init(x, sineTimer)
   self.x = x
   self.cx = x
   self.y = -30
@@ -26,7 +26,7 @@ function EnemyMedium:init(x, sineTimer)
   self.shootTimer = self.shootTimerMax
   self.canShoot = false
 
-  self.img = love.graphics.newImage('gfx/sprites/bad.png')
+  self.img = love.graphics.newImage('gfx/sprites/enemy-simu-med.png')
   self.shieldImg = love.graphics.newImage('gfx/sprites/bad-shield.png')
 
   self.w = self.img:getWidth()
@@ -35,7 +35,7 @@ function EnemyMedium:init(x, sineTimer)
   self.shieldAnim = newAnimation(self.shieldImg, 29, 18, 1, 2)
 end
 
-function EnemyMedium:update(dt)
+function EnemySimuMed:update(dt)
   Enemy.update(self, dt)
 
   self.shootTimer = self.shootTimer - 1*dt
@@ -44,7 +44,7 @@ function EnemyMedium:update(dt)
   end
 end
 
-function EnemyMedium:doAI(dt)
+function EnemySimuMed:doAI(dt)
   -- Move in a funky wave
   self.sineTimer = self.sineTimer + (dt * 1)
 
@@ -69,7 +69,7 @@ function EnemyMedium:doAI(dt)
   end
 end
 
-function EnemyMedium:shoot()
+function EnemySimuMed:shoot()
   self.canShoot = false
   self.shootTimer = self.shootTimerMax
 
@@ -80,7 +80,7 @@ function EnemyMedium:shoot()
   game.gs.badBullets:addBullet(newBullet2)
 end
 
-function EnemyMedium:draw()
+function EnemySimuMed:draw()
   --local nx = math.floor(self.x - self.w / 2)
   --local ny = math.floor(self.y - self.h / 2)
 
@@ -100,7 +100,7 @@ function EnemyMedium:draw()
   Enemy.draw(self)
 end
 
-function EnemyMedium:destroy()
+function EnemySimuMed:destroy()
   ExplosionMed(self.x, self.y)
   Enemy.destroy(self, true)
   game.gs:addScore(1)
