@@ -3,15 +3,14 @@ Class = require 'libs.hump.class'
 -- All enemies must inherit from Enemy
 EnemySimuMed = Class{__includes = Enemy}
 
--- This enemy is trash and basically a showcase of how intrincate (or simple)
--- An AI routine can get, this one is rather simple though
+-- This is the medium sized enemy that appears only during the simulation level
 function EnemySimuMed:init(x, sineTimer)
   self.x = x
   self.cx = x
   self.y = -30
-  self.radius = 12
-  self.mhp = 20
-  self.msp = 10
+  self.radius = 13
+  self.mhp = 40
+  self.msp = 0
   self.hp = self.mhp
   self.sp = self.msp
   self.vx = 0
@@ -27,12 +26,12 @@ function EnemySimuMed:init(x, sineTimer)
   self.canShoot = false
 
   self.img = love.graphics.newImage('gfx/sprites/enemy-simu-med.png')
-  self.shieldImg = love.graphics.newImage('gfx/sprites/bad-shield.png')
+  --self.shieldImg = love.graphics.newImage('gfx/sprites/bad-shield.png')
 
   self.w = self.img:getWidth()
   self.h = self.img:getHeight()
 
-  self.shieldAnim = newAnimation(self.shieldImg, 29, 18, 1, 2)
+  --self.shieldAnim = newAnimation(self.shieldImg, 29, 18, 1, 2)
 end
 
 function EnemySimuMed:update(dt)
@@ -81,21 +80,11 @@ function EnemySimuMed:shoot()
 end
 
 function EnemySimuMed:draw()
-  --local nx = math.floor(self.x - self.w / 2)
-  --local ny = math.floor(self.y - self.h / 2)
-
   love.graphics.draw(self.img, self.x, self.y, 0, 1, 1, self.w / 2, self.h / 2)
 
-  -- if self.sp >= 3 then
-  --   self.shieldAnim:seek(1)
-  --   self.shieldAnim:draw(nx - 1, ny - 1)
-  -- elseif self.sp >= 1 then
-  --   self.shieldAnim:seek(2)
-  --   self.shieldAnim:draw(nx - 1, ny - 1)
-  -- end
-  love.graphics.setColor(255, 255, 255, AlphaLevel(self.sp, self.msp))
-  self.shieldAnim:draw(self.x - 1, self.y - 1, 0, 1, 1, self.w / 2, self.h / 2)
-  love.graphics.setColor(255, 255, 255, 255)
+  --love.graphics.setColor(255, 255, 255, AlphaLevel(self.sp, self.msp))
+  --self.shieldAnim:draw(self.x - 1, self.y - 1, 0, 1, 1, self.w / 2, self.h / 2)
+  --love.graphics.setColor(255, 255, 255, 255)
 
   Enemy.draw(self)
 end

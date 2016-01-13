@@ -45,6 +45,8 @@ function EnemyMine:doAI(dt)
       self.anim:seek(2)
 
       -- The following is a pseudogravitational algorithm
+      -- TODO IT IS POSSIBLE TO DO THIS WITHOUT CALLING math.abs AND REMOVING
+      -- THE IFs BELOW!!
       local dx = math.abs(self.x - gpx)
       local dy = math.abs(self.y - gpy)
 
