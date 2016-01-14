@@ -1,35 +1,16 @@
-explosions = {}
---
--- expHitImg = nil
--- expMediumImg = nil
---
--- function explosions.load ()
---   expHitImg = love.graphics.newImage('gfx/parts/small-impact.png')
---   expMediumImg = love.graphics.newImage('gfx/parts/explosion.png')
--- end
---
--- function explosions.add (t, x, y)
---   if t == "hit" then
---     frames = 3
---     newAnim = newAnimation(expHitImg, 7, 7, 0.1, frames)
---     TEsound.play("sfx/hit.ogg", "", 0.8, math.random(10, 12) / 10)
---   elseif t == "medium" then
---     frames = 12
---     newAnim = newAnimation(expMediumImg, 32, 32, 0.05, 0)
---     newAnim.setMode("once")
---     TEsound.play("sfx/explosion-med.ogg", "", 0.8, math.random(8, 11) / 10)
---   end
---
---   newExplosion = {anim = newAnim, frames = frames, c = 0, x = x, y = y}
---   table.insert(explosions, newExplosion)
--- end
---
+explosions = {} -- This is a global list holding all explosions, which is hella wrong
+                -- It should be a list on the scene or at least gamestate
+                -- Or better yet, an object holding all explosions
+                -- TODO FIX THIS PLEASE
+
+-- Function to update all explosions
 function explosions.update (dt)
   for i, exp in ipairs(explosions) do
     exp:update(dt, i)
   end
 end
 
+-- Function to draw all explosions
 function explosions.draw ()
   for i, exp in ipairs(explosions) do
     exp:draw()
@@ -37,35 +18,40 @@ function explosions.draw ()
 end
 
 Class = require 'libs.hump.class'
-
 Explosion = Class{}
 
+-- Prototypical Explosion class, from which all different explosions inherit
 function Explosion:init(x, y)
-  self.x = x
+  self.x = x -- Coordinates for the explosion
   self.y = y
 
-  self.frames = 1
-  self.frame = 0
+  self.frames = 1 -- How many frames does it have
+  self.frame = 0  -- ...And what frame is it on
 
-  self.w = 2
+  self.w = 2 -- Size of the explosion
   self.h = 2
 
-  self.r = 0
+  self.r = 0 -- Radius for colission purposes
 
   self.anim = newAnimation(love.graphics.newImage('gfx/nul.png'), 2, 2, 0.1, 0)
 
+  -- Inserts itself into the table upon creation
   table.insert(explosions, self)
 end
 
 function Explosion:update(dt, i)
+  -- Internally play at ten times the regular speed because there's something weird going on
+  -- TODO FIXME
   self.frame = self.frame + 10 * dt
   self.anim:update(dt)
 
   if self.frame > self.frames then
+    -- Remove the explosion once it's no longer needed
     table.remove(explosions, i)
   end
 end
 
 function Explosion:draw()
+  -- Draw the animation frame
   self.anim:draw(self.x, self.y, self.r, 1, 1, self.w / 2, self.h / 2)
 end

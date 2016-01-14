@@ -2,6 +2,7 @@ Class = require 'libs.hump.class'
 
 PowerupSP = Class{__includes = Powerup}
 
+-- Comments are on PowerupHPFull
 function PowerupSP:init(x, y)
   Powerup.init(self, x, y)
   self.vy = 20

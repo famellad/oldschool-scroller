@@ -2,6 +2,7 @@ require 'libs.hump.class'
 
 TitleScreen = Class{}
 
+-- Prototype class for a title screen
 function TitleScreen:init()
   self.img = nil
   self.animg = nil

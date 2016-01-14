@@ -2,6 +2,8 @@ Class = require 'libs.hump.class'
 
 ShipArrow = Class{__includes = Ship}
 
+-- The only ship that's worth it sprite-wise...
+-- This is the ship the player uses
 function ShipArrow:init()
   self.radius = 11  -- Radius for collisions
   self.maxv = 140    -- Maximum velocity
@@ -21,10 +23,13 @@ function ShipArrow:update(dt, x, y, vx, vy)
   Ship.update(self)
 
   if (vx < -80) then
+    -- If the ship is moving left faster than 80 units/sec, use the turn left frame
     self.frames:seek(2)
   elseif (vx > 80) then
+    -- Likewise, if it's moving to the right faster than 80 units/sec, use the turn right frame
     self.frames:seek(3)
   else
+    -- Else, use the regular standing frame
     self.frames:seek(1)
   end
 
@@ -32,8 +37,7 @@ function ShipArrow:update(dt, x, y, vx, vy)
 end
 
 function ShipArrow:draw(x, y)
-  --self.exhaust:draw()
-  --Ship.draw(self, x, y)
-  self.frames:draw(x + 23, y)
-  self.exhaust:draw(x + 9 + 23, y + 20)
+  -- TODO DRAW THE SHADOW IF NECESSARY
+  self.frames:draw(x + 23, y)           -- Draw the model
+  self.exhaust:draw(x + 9 + 23, y + 20) -- Draw the exhaust
 end
