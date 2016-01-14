@@ -29,27 +29,33 @@ end
 -- Trigger a specific mount
 -- TODO REDO THIS
 function Player:triggerWeapon(mount)
+  -- If the player has enough PP and is alive...
   if self.pp > 0 and game.gs.isAlive then
+    -- Trigger all mounts
     if mount == "all" then
-      local totalPP = 0
+      local totalPP = 0 -- Temp variable to calculate the total amount of PP needed
       for i, weapon in ipairs(self.weapons) do
-        totalPP = totalPP + weapon.energy
+        totalPP = totalPP + weapon.energy -- For each weapon, add the PP needed to the total
       end
-      local currPP = self.pp
+      local currPP = self.pp -- Temp value holding the current PP
       for i, weapon in ipairs(self.weapons) do
+        -- If the current PP is greater than the total PP needed, fire all weapons
         if weapon.canShoot and currPP >= totalPP then
           weapon:shoot(self)
         end
       end
     elseif mount == "front" then
+      -- Shoot the front mount
       if self.weapons[1].canShoot then
         self.weapons[1]:shoot(self)
       end
     elseif mount == "left" then
+      -- Shoot the left mount
       if self.weapons[2].canShoot then
         self.weapons[2]:shoot(self)
       end
     elseif mount == "right" then
+      -- Shoot the right mount
       if self.weapons[3].canShoot then
         self.weapons[3]:shoot(self)
       end
@@ -57,6 +63,8 @@ function Player:triggerWeapon(mount)
   end
 end
 
+-- Function to mount a weapon
+-- TODO REDO THIS BECAUSE IT WORKS LIKE CARP
 function Player:addWeapon (kind, level, x, y)
   if kind == "hammer" then
     newWeapon = WeaponHammer(x, y, level)

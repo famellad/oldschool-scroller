@@ -7,7 +7,7 @@ function BackSimu:init()
   self.img = love.graphics.newImage('gfx/back/back-simu.png')
 
   -- Faster background
-  self.vy = 40
+  self.vy = 30
 
   -- We want to show the shadow in this stage
   self.shadow = true
