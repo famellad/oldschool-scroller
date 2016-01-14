@@ -12,13 +12,12 @@ function Player:init()
     self.vx = 0
     self.vy = 0
     self.ax = 0
-    self.ax = 0
+    self.ay = 0
   -- > controls
     self.movingLeft = false
     self.movingRight = false
     self.movingUp = false
     self.movingDown = false
-    --self.moving = false
   -- > Gameplay
     self.hp = self.ship.mhp
     self.sp = self.ship.msp
@@ -29,35 +28,6 @@ function Player:init()
   -- > Size
     self.w = self.ship.img:getWidth()
     self.h = self.ship.img:getHeight()
-end
-
-function Player:triggerWeapon(mount)
-  if self.pp > 0 and game.gs.isAlive then
-    if mount == "all" then
-      local totalPP = 0
-      for i, weapon in ipairs(self.weapons) do
-        totalPP = totalPP + weapon.energy
-      end
-      local currPP = self.pp
-      for i, weapon in ipairs(self.weapons) do
-        if weapon.canShoot and currPP >= totalPP then
-          weapon:shoot(self)
-        end
-      end
-    elseif mount == "front" then
-      if self.weapons[1].canShoot then
-        self.weapons[1]:shoot(self)
-      end
-    elseif mount == "left" then
-      if self.weapons[2].canShoot then
-        self.weapons[2]:shoot(self)
-      end
-    elseif mount == "right" then
-      if self.weapons[3].canShoot then
-        self.weapons[3]:shoot(self)
-      end
-    end
-  end
 end
 
 function Player:update (dt)
@@ -71,14 +41,17 @@ function Player:update (dt)
     self.sp = self.sp + 3 * dt
   end
 
-  self:handleMovement(dt)
-  self:handleMovementPost(dt)
-  self:brake(dt)
-
   -- Update weapons
   for i, weapon in ipairs(self.weapons) do
     weapon:update(dt)
   end
+
+  -- Movement is handled in three steps and is absolutely mental
+  -- Refer to each individual function for more detailed explanations
+  -- It works like a charm, btw ;)
+  self:handleMovement(dt)
+  self:handleMovementPost(dt)
+  self:brake(dt)
 
   -- Update Ship
   self.ship:update(dt, self.x, self.y, self.vx, self.vy)
@@ -106,26 +79,32 @@ function Player:damage(damage)
 end
 
 function Player:destroy()
-  game.gs.isAlive = false
-  ExplosionMed(self.x, self.y)
-  music.tracks.feathers:stop()
-  TEsound.play("bgm/death-noloop.ogg", "dead")
+  game.gs.isAlive = false -- On player destruction the isAlive flag is set to false
+  ExplosionMed(self.x, self.y) -- An explosion is created where the player stood
+  music.tracks.feathers:stop() -- The music is stopped -- TODO IT DOESNT REALLY STOP!!
+  TEsound.play("bgm/death-noloop.ogg", "dead") -- The death fanfare is played
 end
 
 function Player:reset ()
+  -- Respawning the player puts them right in the middle of the screen
   self.x = width/2
   self.y = 300
+
+  -- Resets all counters
   self.hp = self.ship.mhp
   self.sp = self.ship.msp
   self.pp = self.ship.mpp
 end
 
 function Player:draw ()
+  -- Draw the player only if they are alive
   if game.gs.isAlive then
+    -- Calculate the middle point...
     local nx = math.floor(self.x - self.w / 2)
     local ny = math.floor(self.y - self.h / 2)
     self.ship:draw(nx, ny)
 
+    -- Draw debug information if needed
     if debug >= 2 then
       love.graphics.setColor(150, 170, 255, 255)
       love.graphics.circle("line", self.x, self.y, self.ship.radius, 16)

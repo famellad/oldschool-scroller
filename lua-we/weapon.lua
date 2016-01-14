@@ -13,7 +13,7 @@ function Weapon:init(rx, ry, level)
   self.rateMax = 0.1
   self.rate = self.rateMax
   self.canShoot = true
-  self.recoil = 100
+  self.recoil = 10
 
   -- Misc
   self.mods = {}
@@ -31,4 +31,6 @@ function Weapon:shoot(player)
   player.pp = player.pp - self.energy
   self.canShoot = false
   self.rate = self.rateMax
+
+  player.ay = player.ay + self.recoil
 end

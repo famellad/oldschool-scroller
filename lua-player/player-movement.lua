@@ -13,9 +13,6 @@
 -- end
 
 function Player:handleMovement(dt)
-  self.ax = 0
-  self.ay = 0
-
   -- Handle Movement, X-axis
   -- First check whether the player is out of boundaries
   -- If so then they're immediately accelerated towards the centre
@@ -90,4 +87,7 @@ function Player:brake(dt)
       self.vy = self.vy * 0.87 --* dt * 60--+ self.ship.acc*dt/3
     end
   end
+
+  self.ax = 0
+  self.ay = 0
 end
