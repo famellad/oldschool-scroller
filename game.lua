@@ -10,7 +10,7 @@ end
 
 function Game:update(dt)
   if self.tmpState == 0 then
-    self.scene:update(dt)
+    self.scene:update(dt) -- Update the scene
   else
     music.tracks.feathers:play()
     self.gs:update(dt) -- update the current gamestate

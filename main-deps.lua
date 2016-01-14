@@ -45,42 +45,42 @@ require("lua-ent.ships.dart")    -- PIECES OF UTTER
 require("lua-ent.ships.javelin") -- MEGA USELESSNESS
 
 -- Load Particle Systems
-require("lua-part.bullet-system")
-require("lua-part.bullet")
-require("lua-part.bullets.bullet-hammer")
-require("lua-part.explosion")
-require("lua-part.explosions.explosion-hit")
-require("lua-part.explosions.explosion-med")
-require("lua-part.emitter")
-require("lua-part.particle")
+require("lua-part.bullet-system")            -- Bullet system class, for all your bullet needs
+require("lua-part.bullet")                   -- A single individual bullet (Prototype)
+require("lua-part.bullets.bullet-hammer")    -- Hammer bullets
+require("lua-part.explosion")                -- Prototype explosion
+require("lua-part.explosions.explosion-hit") -- Bullet hit
+require("lua-part.explosions.explosion-med") -- Medium sized explosion
+require("lua-part.emitter")                  -- Particle emitter
+require("lua-part.particle")                 -- A single particle (prototype)
 
 -- Load Emitters
-require("lua-part.emitters.emitter-exhaust")
-require("lua-part.emitters.emitter-explosion")
+require("lua-part.emitters.emitter-exhaust")   -- Fire-like emitter
+require("lua-part.emitters.emitter-explosion") -- Hot red debris flying off in every direction
 
 -- Load Particles
-require("lua-part.particles.particle-small-fire")
+require("lua-part.particles.particle-small-fire") -- A small particle that goes from bright orange to dim red
 
 -- Aditional Visual Elements
-require("lua-bg.background")
-require("lua-bg.back-space-proto")
-require("lua-bg.back-nebula")
-require("lua-bg.back-eagle")
-require("lua-bg.back-simu")
-require("lua-gui.gui")
-require("lua-gui.gui-fonts")
+require("lua-bg.background")       -- The backdrop (prototype)
+require("lua-bg.back-space-proto") -- Prototypical backdrop for space scenes
+require("lua-bg.back-nebula")      -- Green nebula backdrop
+require("lua-bg.back-eagle")       -- Red nebula backdrop
+require("lua-bg.back-simu")        -- Simulation backdrop
+require("lua-gui.gui")             -- The GUI-HUD thing
+require("lua-gui.gui-fonts")       -- All them fonts
 --require("shader")
 
 -- Weapons
-require("lua-we.weapon")
-require("lua-we.weapon-hammer")
+require("lua-we.weapon")        -- Prototype weapon
+require("lua-we.weapon-hammer") -- Hammer weapon
 
 -- Load sounds
-require("lua-snd.TEsound")
-require("lua-snd.msm")
-require("lua-snd.music")
-require("lua-snd.sound")
+require("lua-snd.TEsound") -- Class for controlling once-sounds
+--require("lua-snd.msm")
+require("lua-snd.music")   -- Class for musics
+require("lua-snd.sound")   -- I don't know what this does TODO
 
 -- Class system and post processing
-Class = require "libs.hump.class"
+Class = require "libs.hump.class" -- I don't think these do anything
 shine = require "libs.shine"

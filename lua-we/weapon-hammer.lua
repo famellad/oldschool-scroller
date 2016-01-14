@@ -24,11 +24,15 @@ function WeaponHammer:update(dt)
 end
 
 function WeaponHammer:shoot(player)
+  -- Call the parent function
   Weapon.shoot(self, player)
 
   -- Create Bullit
   newBullet = BulletHammer(player.x + self.rx, player.y + self.ry, self.level, true)
 
+  -- Play a sound upon shooting
   TEsound.play("sfx/hit.ogg", "", 0.8, math.random(9, 11) / 10)
+
+  -- Finally add a bullet to the bullet array
   game.gs.bullets:addBullet(newBullet)
 end

@@ -180,11 +180,14 @@ function GameState:pauseUnpause()
   end
 end
 
+-- Functions determining a chance to get a new powerup
 function GameState:chancePowerup(x, y)
   local rand = math.random(0, 100)
+  -- 4% for big powerups
   if rand < 4 then
     local newPowerup = self:returnBigPowerup(x, y)
     table.insert(self.powerups, newPowerup)
+  -- 14% for small powerups
   elseif rand < 18 then
     local newPowerup = self:returnSmallPowerup(x, y)
     table.insert(self.powerups, newPowerup)

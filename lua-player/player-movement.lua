@@ -81,16 +81,17 @@ function Player:brake(dt)
 --      self.vx = self.vx * 0.89 --* dt * 60--- self.ship.acc*dt/2
 --    elseif self.vx < 0 then
 --      self.vx = self.vx * 0.89 --* dt * 60--+ self.ship.acc*dt/2
-    end
+--    end
   end
 
+  -- Y movement is analogous, yet it slows down faster, because I say so
   if self.ay == 0 then
     self.vy = self.vy * 0.87
 --    if self.vy > 0 then
 --      self.vy = self.vy * 0.87 --* dt * 60--- self.ship.acc*dt/3
 --    elseif self.vy < 0 then
 --      self.vy = self.vy * 0.87 --* dt * 60--+ self.ship.acc*dt/3
-    end
+--    end
   end
 
   -- Acceleration is reset so we can begin anew in the next cycle and see what happens
