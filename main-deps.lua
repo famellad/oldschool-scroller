@@ -6,15 +6,20 @@ require("game")        -- Basic game handling
 require("static")      -- Static functions and variables
 require("console")     -- Game console TODO
 require("debug-print") -- Debug output functions
+require("entity")      -- Generic entity that may appear in the game area
 
 -- Load Controller classes
-require("lua-ctl/controller")          -- General controller class
-require("lua-ctl/controller-keyboard") -- Keyboard compatibility
-require("lua-ctl/controller-xbox")     -- Xbox gamepad compat
+require("lua-ctl.controller")          -- General controller class
+require("lua-ctl.controller-keyboard") -- Keyboard compatibility
+require("lua-ctl.controller-xbox")     -- Xbox gamepad compat
 
 -- States and scenes
 require("game-state")             -- Class holding the game state (everything after starting new game)
 require("lua-scenes.scene-title") -- Scene for the titles and the "press start"
+
+-- Direction and staging
+require("lua-staging.director")  -- The director that controls the waves :)
+require("lua-staging.challenge") -- Challenges for stages
 
 -- Load Player
 require("lua-player.player")          -- Player class
@@ -22,27 +27,25 @@ require("lua-player.player-weapons")  -- Player weapons system
 require("lua-player.player-movement") -- Player movement
 
 -- Load Entities
-require("lua-ent.director")                     -- The director that controls the waves :)
-require("lua-ent.entity")                       -- Generic entity that may appear in the game area
-require("lua-ent.enemy")                        -- Generic enemy
-require("lua-ent.enemies.enemy-asteroid")       -- Medium Asteroid
-require("lua-ent.enemies.enemy-asteroid-small") -- Small Asteroid
-require("lua-ent.enemies.enemy-medium")         -- Medium shooty enemy
-require("lua-ent.enemies.enemy-simu-med")       -- Medium simu shooty enemy
-require("lua-ent.enemies.enemy-mine")           -- Mine enemy
-require("lua-ent.powerup")                      -- Generic powerup that may be picked up
-require("lua-ent.powerups.powerup-hp")          -- Health powerup
-require("lua-ent.powerups.powerup-hp-full")     -- Full Health powerup
-require("lua-ent.powerups.powerup-sp")          -- Shield powerup
-require("lua-ent.powerups.powerup-sp-full")     -- Full Shield powerup
-require("lua-ent.powerups.powerup-pp")          -- Energy powerup
-require("lua-ent.powerups.powerup-pp-full")     -- Full Energy powerup
+require("lua-actors.enemy")                        -- Generic enemy
+require("lua-actors.enemies.enemy-asteroid")       -- Medium Asteroid
+require("lua-actors.enemies.enemy-asteroid-small") -- Small Asteroid
+require("lua-actors.enemies.enemy-medium")         -- Medium shooty enemy
+require("lua-actors.enemies.enemy-simu-med")       -- Medium simu shooty enemy
+require("lua-actors.enemies.enemy-mine")           -- Mine enemy
+require("lua-actors.powerup")                      -- Generic powerup that may be picked up
+require("lua-actors.powerups.powerup-hp")          -- Health powerup
+require("lua-actors.powerups.powerup-hp-full")     -- Full Health powerup
+require("lua-actors.powerups.powerup-sp")          -- Shield powerup
+require("lua-actors.powerups.powerup-sp-full")     -- Full Shield powerup
+require("lua-actors.powerups.powerup-pp")          -- Energy powerup
+require("lua-actors.powerups.powerup-pp-full")     -- Full Energy powerup
 
 -- Load Ships
-require("lua-ent.ship")          -- Prototype ship class
-require("lua-ent.ships.arrow")   -- The main ship in the game
-require("lua-ent.ships.dart")    -- PIECES OF UTTER
-require("lua-ent.ships.javelin") -- MEGA USELESSNESS
+require("lua-actors.ship")          -- Prototype ship class
+require("lua-actors.ships.arrow")   -- The main ship in the game
+require("lua-actors.ships.dart")    -- PIECES OF UTTER
+require("lua-actors.ships.javelin") -- MEGA USELESSNESS
 
 -- Load Particle Systems
 require("lua-part.bullet-system")            -- Bullet system class, for all your bullet needs
