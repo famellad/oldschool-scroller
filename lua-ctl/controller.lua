@@ -10,6 +10,10 @@ function Controller:init()
   self.js = love.joystick.getJoysticks()
   self.cJoy = self.js[1]
   --self.joystick = joysticks[0]
+
+  self.xboxDeadzone = 0.4
+
+  self.startPressed = false
 end
 
 function Controller:checkBindTable ()
@@ -23,7 +27,7 @@ function Controller:checkBindTable ()
     self:xboxAttached()
 
     -- TODO Have a fallback class when it turns out it's not an xbox controller
-    -- self:genericAttached()
+    -- self:gamepadAttached()
   end
 end
 
@@ -63,6 +67,32 @@ function Controller:handleInput (player)
     elseif love.keyboard.isDown("right") then
       player:triggerWeapon("right")
     end
+
+    --self:doStart()
+    -- Start/select
+    -- if self.butStart then
+    --   self.startPressed = true
+    --   self:doStart()
+    -- else
+    --   self.startPressed = false
+    -- end
+    --
+    -- if self.butSelect then
+    --
+    -- end
+  end
+end
+
+function Controller:doStart()
+  if game.tmpState == 0 then
+    if game.scene.state == 2 then
+      game.tmpState = 1
+      music.tracks.shoot:stop()
+    else
+      game.scene.state = game.scene.state + 1
+    end
+  else
+    game.gs:pauseUnpause() -- TODO change this for "handleReturn"
   end
 end
 
@@ -75,6 +105,11 @@ function love.keypressed(key, isrepeat)
     else
       console.toggled = true
     end
+  elseif key == 'l' then
+    debug = debug + 1
+    if debug > 2 then
+      debug = 0
+    end
   end
 
   if not console.toggled then
@@ -85,21 +120,7 @@ function love.keypressed(key, isrepeat)
       end
       love.setEffects()
     elseif key == 'return' then
-      if game.tmpState == 0 then
-        if game.scene.state == 2 then
-          game.tmpState = 1
-          music.tracks.shoot:stop()
-        else
-          game.scene.state = game.scene.state + 1
-        end
-      else
-        game.gs:pauseUnpause() -- TODO change this for "handleReturn"
-      end
-    elseif key == 'l' then
-      debug = debug + 1
-      if debug > 2 then
-        debug = 0
-      end
+      Controller.doStart()
     elseif key == 'escape' then
       love.event.push('quit')
     end

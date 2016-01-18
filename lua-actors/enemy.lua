@@ -9,6 +9,7 @@ function Enemy:init()
   self.msp = 0 -- Maximum Shield
   self.dif = 0 -- Difficulty of enemy
   self.radius = 0 -- Radius for collision
+  self.score = 0  -- Score awarded to the player upon defeat
 end
 
 function Enemy:update(dt)

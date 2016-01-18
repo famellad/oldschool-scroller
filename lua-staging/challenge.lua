@@ -9,6 +9,7 @@ function Challenge:init ()
   self.completionThreshold = 0 -- Score required to pass the challenge
   self.completed = false       -- Whether the challenge has been completed
   self.showWarning = false     -- Whether to show a warning beforehand!
+  self.waves = {}              -- Waves on the challenge
 end
 
 function Challenge:update(dt)
@@ -22,4 +23,6 @@ end
 function Challenge:draw()
   -- Some challenges might want to draw an overlay,
   -- Like the length of an asteroid field, or the health of a boss, go nuts!
+  -- It is of course not necessary to override this function,
+  -- As not all challenges are going to draw overlays, of course, that'd be silly.. riGHT??
 end

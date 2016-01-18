@@ -1,6 +1,6 @@
 require("main-deps")
 
-version = "SSP dev 1"
+version = "SSP InDev 2"
 
 -- Used for recalculating the draw functions
 prevWidth = 0

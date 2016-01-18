@@ -4,7 +4,7 @@ Class = require 'libs.hump.class'
 EnemySimuMed = Class{__includes = Enemy}
 
 -- This is the medium sized enemy that appears only during the simulation level
-function EnemySimuMed:init(x, sineTimer)
+function EnemySimuMed:init(x)
   self.x = x
   self.cx = x
   self.y = -30
@@ -14,11 +14,13 @@ function EnemySimuMed:init(x, sineTimer)
   self.hp = self.mhp
   self.sp = self.msp
   self.vx = 0
-  self.vy = 55
+  self.vy = 60
   self.dif = 80
 
+  self.score = 25
+
   -- Sine timer for the movement
-  self.sineTimer = sineTimer
+--self.sineTimer = sineTimer
 
   -- Shooting timer
   self.shootTimerMax = 2.0
@@ -37,6 +39,7 @@ end
 function EnemySimuMed:update(dt)
   Enemy.update(self, dt)
 
+  -- TODO REDO THE SHOOTING MECHANIC, SHOOT BURSTS
   self.shootTimer = self.shootTimer - 1*dt
   if self.shootTimer < 0 then
     self.canShoot = true
@@ -44,21 +47,6 @@ function EnemySimuMed:update(dt)
 end
 
 function EnemySimuMed:doAI(dt)
-  -- Move in a funky wave
-  self.sineTimer = self.sineTimer + (dt * 1)
-
-  self.x = self.cx + 8 * math.sin(1.5*self.sineTimer)
-  if self.cx < game.gs.player.x then
-    self.cx = self.cx + 6 * dt
-  else
-    self.cx = self.cx - 6 * dt
-  end
-
-
-  if self.sp < self.msp then
-    self.sp = self.sp + (2 * dt)
-  end
-
   -- Check whether to shoot
   local dist = game.gs.player.y - self.y
   if self.canShoot

@@ -38,6 +38,9 @@ end
 
 function ShipArrow:draw(x, y)
   -- TODO DRAW THE SHADOW IF NECESSARY
+  love.graphics.setColor(0, 0, 0, 127)
+    self.frames:draw(x + 45, y + 24, 0, 0.51, 0.51)
+  love.graphics.setColor(255, 255, 255, 255)
   self.frames:draw(x + 23, y)           -- Draw the model
   self.exhaust:draw(x + 9 + 23, y + 20) -- Draw the exhaust
 end
