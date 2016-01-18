@@ -1,6 +1,6 @@
 require("main-deps")
 
-version = "SSP InDev 2"
+version = "SSP InDev 5"
 
 -- Used for recalculating the draw functions
 prevWidth = 0
@@ -11,8 +11,15 @@ quality = 0 -- FIXME SHINE WORKS DIFFERENTLY ON 0.10.0!!! CONTACT THE AUTHOR!!
 -- Level of debug information displayed
 debug = 0
 
+-- Variable to determine if a code is executed
+gotHere = false
+
 -- Current Game tick
 t = 0
+
+-- If set to true, the framerate is assumed to be 60FPS, thus
+-- Effectively preventing any frame skips, useful for accuracy
+zeroSkip = true
 
 function love.load(arg)
   math.randomseed( os.time() )
@@ -44,6 +51,9 @@ end
 
 -- Tick update function
 function love.update(dt)
+  if zeroSkip then
+    dt = 1/60 -- Assume the game is running at 60FPS
+  end
   game:update(dt)
 
   console:update(dt)
@@ -61,7 +71,7 @@ function love.update(dt)
     math.randomseed( os.time() )
   end
 
-  t = t+1 -- Tick done!
+  t = t + 1 -- Tick done!
   gdt = dt
 end
 

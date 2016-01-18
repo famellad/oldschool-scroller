@@ -7,9 +7,14 @@ function Challenge:init ()
   self.name = ""               -- Name of the Challenge
   self.currentScore = 0        -- Variable holding the current score for the challenge
   self.completionThreshold = 0 -- Score required to pass the challenge
+  self.started = false         -- Whether the challenge has begun
   self.completed = false       -- Whether the challenge has been completed
   self.showWarning = false     -- Whether to show a warning beforehand!
   self.waves = {}              -- Waves on the challenge
+end
+
+function Challenge:spawnWaves(enemyTable)
+  -- Prototypical
 end
 
 function Challenge:update(dt)

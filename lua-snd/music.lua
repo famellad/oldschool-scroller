@@ -5,7 +5,7 @@ Music = Class{}
 function Music:init()
   self.tracks = {feathers = love.audio.newSource("bgm/level1-loop.ogg"),
                  shoot    = love.audio.newSource("bgm/intro-semiloop.ogg")}
-
+  
   --table.insert(self.tracks,)
 
   self.tracks.feathers:setLooping(true)

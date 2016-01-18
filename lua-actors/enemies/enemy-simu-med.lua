@@ -4,10 +4,10 @@ Class = require 'libs.hump.class'
 EnemySimuMed = Class{__includes = Enemy}
 
 -- This is the medium sized enemy that appears only during the simulation level
-function EnemySimuMed:init(x)
+function EnemySimuMed:init(x, y)
   self.x = x
   self.cx = x
-  self.y = -30
+  self.y = -30 - y
   self.radius = 13
   self.mhp = 40
   self.msp = 0

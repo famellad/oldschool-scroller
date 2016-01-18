@@ -28,6 +28,7 @@ function CircleCircleCollision(x1, y1, r1, x2, y2, r2)
 end
 
 -- Returns consistent alpha levels, quantized (8-bits)
+-- A real SNES has only 3 alpha levels 0, 127 and 255
 function AlphaLevel (current, maximum)
   if current < maximum * 2 / 100 then
     return 0
@@ -48,7 +49,8 @@ function AlphaLevel (current, maximum)
   end
 end
 
-function tableLength(T)
+-- Returns the length of a table object
+function TableLength(T)
   local count = 0
   for _ in pairs(T) do count = count + 1 end
   return count

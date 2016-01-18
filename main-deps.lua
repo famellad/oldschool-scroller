@@ -20,6 +20,9 @@ require("lua-scenes.scene-title") -- Scene for the titles and the "press start"
 -- Direction and staging
 require("lua-staging.director")  -- The director that controls the waves :)
 require("lua-staging.challenge") -- Challenges for stages
+require("lua-staging.wave")
+require("challenge-deps")
+require("waves-deps")            -- Waves for challenges
 
 -- Load Player
 require("lua-player.player")          -- Player class

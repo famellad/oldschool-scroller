@@ -7,14 +7,14 @@ function Director:init(dif)
   self.difficulty = 0  -- Current Difficulty of the game
   self.targetDif = dif -- Target difficulty, must be above 0
 
-  self.currentChallenge = 4 -- Current challenge being placed
+--self.currentChallenge = 4 -- Current challenge being placed
                             -- 0: Resting
                             -- 1: Asteroid field
                             -- 2: Scattered enemies
                             -- 3: Minefield
                             -- x: Wave enemies
                             -- x: Boss Fight
-  self.challenge = Challenge()
+  self.challenge = ChallengeSimuMed(4, 1)
 
   self.enemies = {} -- Array of enemies on screen
 
@@ -75,28 +75,30 @@ end
   end
 
 function Director:doChallenge(dt)
-  --[[
-  if self.currentChallenge == 0 then
-    self:doResting(dt)
-  elseif self.currentChallenge == 1 then
-    self:doChallengeAsteroids(dt)
-  elseif self.currentChallenge == 2 then
-    self:doChallengeScattered(dt)
-  elseif self.currentChallenge == 3 then
-    self:doChallengeMinefield(dt)
-  elseif self.currentChallenge == 4 then
-      self:doChallengeSimu1(dt)
-    end
-
-  if self.currentChallenge > 0 then
-    -- Do the challenge timer
-    self.challengeTimer = self.challengeTimer - (1 * dt)
-    if self.challengeTimer < 0 then
-      self.currentChallenge = 0
-      self.challengeTimer = math.random(20, 30)
-    end
-  end]]
-  self.challenge:update(dt)
+  -- if self.currentChallenge == 0 then
+  --   self:doResting(dt)
+  -- elseif self.currentChallenge == 1 then
+  --   self:doChallengeAsteroids(dt)
+  -- elseif self.currentChallenge == 2 then
+  --   self:doChallengeScattered(dt)
+  -- elseif self.currentChallenge == 3 then
+  --   self:doChallengeMinefield(dt)
+  -- elseif self.currentChallenge == 4 then
+  --     self:doChallengeSimu1(dt)
+  --   end
+  --
+  -- if self.currentChallenge > 0 then
+  --   -- Do the challenge timer
+  --   self.challengeTimer = self.challengeTimer - (1 * dt)
+  --   if self.challengeTimer < 0 then
+  --     self.currentChallenge = 0
+  --     self.challengeTimer = math.random(20, 30)
+  --   end
+  -- end
+  if not self.challenge.started then
+    self.challenge:spawnWaves(self.enemies)
+    self.challenge.started = true
+  end
 end
 
 -- TODO REDO ALL OF THESE AS CLASSES
