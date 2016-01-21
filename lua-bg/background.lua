@@ -1,9 +1,10 @@
 Class = require 'libs.hump.class'
 
-Background = Class{}
+Background = Class{__includes = Entity}
 Background.img = nil
 
 function Background:init()
+
   -- Movement variables
   self.x = -10  -- X displacement of the background map :: dynamic
   self.y = 0    -- Y displacement of the background map :: dynamic (movement)
@@ -20,6 +21,7 @@ function Background:init()
 end
 
 function Background:update (dt)
+  Entity.update(self, dt)
   -- We scroll the background one tick
   self.y = self.y + self.vy * dt
 

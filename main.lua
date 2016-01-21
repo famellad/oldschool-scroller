@@ -1,6 +1,6 @@
-require("main-deps")
+require("deps-main")
 
-version = "SSP InDev 5"
+version = "SSP InDev 7"
 
 -- Used for recalculating the draw functions
 prevWidth = 0
@@ -20,6 +20,10 @@ t = 0
 -- If set to true, the framerate is assumed to be 60FPS, thus
 -- Effectively preventing any frame skips, useful for accuracy
 zeroSkip = true
+
+-- Offset speed for all entities
+-- TODO THIS SHOULD BE IN GAMESCENE or SOMETHING
+gvy = 0
 
 function love.load(arg)
   math.randomseed( os.time() )

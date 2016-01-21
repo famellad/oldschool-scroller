@@ -31,7 +31,7 @@ function Explosion:init(x, y)
   self.w = 2 -- Size of the explosion
   self.h = 2
 
-  self.r = 0 -- Radius for colission purposes
+  self.r = 0 -- Rotation
 
   self.anim = newAnimation(love.graphics.newImage('gfx/nul.png'), 2, 2, 0.1, 0)
 

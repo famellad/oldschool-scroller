@@ -55,6 +55,13 @@ function Player:update (dt)
 
   -- Update Ship
   self.ship:update(dt, self.x, self.y, self.vx, self.vy)
+
+  -- gvy = -20/256 * self.y + 10
+  -- -10 when at the bottom, +10 when at the top
+  -- Updated every two frames
+  if t % 2 == 0 then
+    gvy = -0.078 * self.y + 10
+  end
 end
 
 function Player:damage(damage)

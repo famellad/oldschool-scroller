@@ -7,14 +7,14 @@ AsteroidMedium = Class{__includes = Enemy}
 function AsteroidMedium:init(x, y)
   self.x = x
   self.y = y
-  self.r = math.random(0, 10)
+  self.r = math.random(0, 4) * math.pi / 8
   self.radius = 15
   self.mhp = 35
   self.hp = self.mhp
   self.sp = 0
   self.vx = math.random(-8, 8)
   self.vy = math.random(60, 80)
-  self.vr = (math.random(10, 20)) / 5
+  self.vr = (math.random(50, 100)) * math.pi / 4
   self.dif = 50
 
   if math.random(0, 1) == 1 then

@@ -17,6 +17,7 @@ function Powerup:init(x, y)
 end
 
 function Powerup:update(dt)
+  Entity.update(self, dt)
   -- Move down...
   self.y = self.y + self.vy * dt
 end

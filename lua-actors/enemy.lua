@@ -13,6 +13,7 @@ function Enemy:init()
 end
 
 function Enemy:update(dt)
+  Entity.update(self, dt)
   -- Do AI pass, this is custom per enemy of course
   self:doAI(dt)
 

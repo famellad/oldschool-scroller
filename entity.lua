@@ -12,7 +12,7 @@ function Entity:init()
 end
 
 function Entity:update(dt)
-
+  self.y = self.y + gvy * dt
 end
 
 function Entity:draw(dt)

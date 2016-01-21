@@ -12,7 +12,7 @@ function ChallengeSimuMed:init(wavesNumber, waveSize)
   self.wavesNumber = wavesNumber
   self.waveSize = waveSize
 
--- FIXME!!!!
+  -- FIXME!!!!
   self.completionThreshold = 15 * wavesNumber * waveSize * 0.75 -- 75% of all enemies
 
   self:makeWaves()

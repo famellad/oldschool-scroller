@@ -12,7 +12,7 @@ end
 
 function love.printDebug()
   love.graphics.push()
-    love.graphics.scale(2)
+    love.graphics.scale(1)
     currentDebugLine = 1
     love.writeDebug(version)
     love.writeDebug("")
@@ -20,7 +20,7 @@ function love.printDebug()
     love.writeDebug("  timer.FPS: " .. love.timer.getFPS())
     love.writeDebug("  .quality: " .. quality)
     love.writeDebug("  .zeroSkip: " .. tostring(zeroSkip))
-    love.writeDebug("  .gotHere: " .. tostring(gotHere))
+    --love.writeDebug("  .gotHere: " .. tostring(gotHere))
     --love.writeDebug("  .currentTick: " .. t)
     love.writeDebug("DIRECTOR VARIABLES:")
     --love.writeDebug("  dir.CD: " .. game.gs.dir.difficulty)
