@@ -90,3 +90,4 @@ require("lua-snd.sound")   -- I don't know what this does TODO
 -- Class system and post processing
 Class = require "libs.hump.class" -- I don't think these do anything
 shine = require "libs.shine"
+--require("libs.shine.init")

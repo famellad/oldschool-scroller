@@ -115,7 +115,7 @@ function love.keypressed(key, isrepeat)
   if not console.toggled then
     if key == 'o' then
       quality = quality + 1
-      if quality then
+      if quality > 3 then
         quality = 0
       end
       love.setEffects()

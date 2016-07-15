@@ -1,12 +1,12 @@
 require("deps-main")
 
-version = "SSP InDev 7"
+version = "SSP InDev 8"
 
 -- Used for recalculating the draw functions
 prevWidth = 0
 
 -- Quality level
-quality = 0 -- FIXME SHINE WORKS DIFFERENTLY ON 0.10.0!!! CONTACT THE AUTHOR!!
+quality = 3 -- FIXME SHINE WORKS DIFFERENTLY ON 0.10.0!!! CONTACT THE AUTHOR!!
 
 -- Level of debug information displayed
 debug = 0
@@ -80,30 +80,30 @@ function love.update(dt)
 end
 
 function love.setEffects()
-  -- local fg = shine.filmgrain()
-  --   fg.opacity = 0.08
-  --   fg.grainsize = 6
-  -- local crt = shine.crt()
-  -- --sl = shine.scanlines()
-  -- --sl.pixel_size = 2*love.window.getHeight() / height
-  -- local bb = shine.boxblur()
-  --   bb.radius = 1
-  -- local sc = shine.separate_chroma()
-  --   sc.angle = 0.525
-  --   sc.radius = 2
-  -- local gl = shine.glowsimple()
-  --   gl.sigma = 4
-  --   gl.min_luma = 0.95
-  --
-  -- if quality == 1 then
-  --   post_effect = sc:chain(crt)
-  -- elseif quality == 2 then
-  --   post_effect = sc:chain(crt):chain(fg)
-  -- elseif quality == 3 then
-  --   post_effect = sc:chain(crt):chain(fg):chain(bb)
-  -- elseif quality == 4 then
-  --   post_effect = sc:chain(crt):chain(fg):chain(bb):chain(gl)
-  -- end
+  local fg = shine.filmgrain()
+    fg.opacity = 0.08
+    fg.grainsize = 6
+  local crt = shine.crt()
+  --sl = shine.scanlines()
+  --sl.pixel_size = 2*love.window.getHeight() / height
+  local bb = shine.boxblur()
+    bb.radius = 1
+  local sc = shine.separate_chroma()
+    sc.angle = 0.525
+    sc.radius = 2
+  local gl = shine.glowsimple()
+    gl.sigma = 4
+    gl.min_luma = 0.95
+
+  if quality == 1 then
+    post_effect = sc:chain(crt)
+  elseif quality == 2 then
+    post_effect = sc:chain(crt):chain(fg)
+  elseif quality == 3 then
+    post_effect = sc:chain(crt):chain(fg):chain(bb)
+  elseif quality == 4 then
+    post_effect = sc:chain(crt):chain(fg):chain(bb):chain(gl)
+  end
 end
 
 function love.pushPopDrawCanvas()
