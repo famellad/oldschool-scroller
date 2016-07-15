@@ -11,7 +11,7 @@ quality = 0 -- FIXME SHINE WORKS DIFFERENTLY ON 0.10.0!!! CONTACT THE AUTHOR!!
 -- Level of debug information displayed
 debug = 0
 
--- Debug variable to determine whether a code is executed
+-- Variable to determine if a code is executed
 gotHere = false
 
 -- Current Game tick
