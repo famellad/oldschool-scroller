@@ -74,8 +74,7 @@ require("lua-bg.back-space-proto") -- Prototypical backdrop for space scenes
 require("lua-bg.back-nebula")      -- Green nebula backdrop
 require("lua-bg.back-eagle")       -- Red nebula backdrop
 require("lua-bg.back-simu")        -- Simulation backdrop
-require("lua-gui.gui")             -- The GUI-HUD thing
-require("lua-gui.gui-fonts")       -- All them fonts
+require("deps-gui")
 --require("shader")
 
 -- Weapons
