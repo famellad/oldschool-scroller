@@ -17,6 +17,18 @@ function GuiElement:init(x, y, index)
   self.selected = false
 end
 
+function GuiElement:centerX()
+  -- Calculate width
+  -- do the thing
+  -- self.x = the thing done
+end
+
+function GuiElement:centerY()
+  -- Calculate height
+  -- do the thing
+  -- self.y = the thing done
+end
+
 function GuiElement:update(dt)
   Entity.update(self, dt)
 end
