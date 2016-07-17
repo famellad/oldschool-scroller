@@ -6,10 +6,10 @@ function Controller:keyboardAttached()
   self.padDown = love.keyboard.isDown('s')  -- Down
 
   -- Emulate Buttons
-  self.butTop = love.keyboard.isDown('down') -- A
-  -- TODO Emulate B
-  -- TODO Emulate X
-  self.butBot = love.keyboard.isDown('up')   -- Y
+  self.butTop = love.keyboard.isDown('down')    -- A
+  self.butRight = love.keyboard.isDown('right') -- B
+  self.butLeft = love.keyboard.isDown('left')   -- X
+  self.butBot = love.keyboard.isDown('up')      -- Y
 
   -- Emulate Shoulders
   -- TODO Emulate LB

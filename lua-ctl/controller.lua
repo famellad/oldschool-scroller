@@ -34,7 +34,6 @@ end
 function Controller:handleInput (player)
   -- Handle inputs only if the console is not active
   if not console.toggled then
-
     -- Check which binds have been activated
     self:checkBindTable()
 
@@ -62,9 +61,9 @@ function Controller:handleInput (player)
       player:triggerWeapon("all")
     elseif self.butBot then
       player:triggerWeapon("front")
-    elseif love.keyboard.isDown('left') then
+    elseif self.butLeft then
       player:triggerWeapon("left")
-    elseif love.keyboard.isDown("right") then
+    elseif self.butRight then
       player:triggerWeapon("right")
     end
 
@@ -86,8 +85,7 @@ end
 function Controller:doStart()
   if game.tmpState == 0 then
     if game.scene.state == 2 then
-      game.tmpState = 1
-      music.tracks.shoot:stop()
+      game.scene = SceneMainMenu()
     else
       game.scene.state = game.scene.state + 1
     end

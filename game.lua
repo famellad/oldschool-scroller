@@ -2,6 +2,11 @@ Class = require 'libs.hump.class'
 
 Game = Class{}
 
+-- List of gamestates
+--  0: Titles screen
+--  1: Main Menu
+--  2: Play scene
+
 function Game:init()
   self.gs = GameState() -- initialize an EMPTY gamestate
   self.scene = SceneTitle() -- temporarily store just the title screen
