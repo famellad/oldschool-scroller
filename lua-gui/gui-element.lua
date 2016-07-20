@@ -7,7 +7,11 @@ function GuiElement:init(x, y, index)
   self.x = x
   self.y = y
 
+  self.width = 0
+  self.height = 0
+
   -- The order in which elements will cycle
+  -- TODO is this redundant?
   self.index = index
 
   -- Whether the element is selectable
@@ -15,6 +19,15 @@ function GuiElement:init(x, y, index)
 
   -- Wether the element is selected
   self.selected = false
+end
+
+function GuiElement:calcWidth()
+  -- This does nothing because an empty element
+  -- contains absolutely nothing
+end
+
+function GuiElement:calcHeight()
+
 end
 
 function GuiElement:centerX()
