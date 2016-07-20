@@ -1,6 +1,6 @@
 Class = require 'libs.hump.class'
 
-SceneMainMenu = Class{__includes = Scene}
+SceneMainMenu = Class{__includes = SceneMenu}
 
 -- This scene is the main menu where you can select
 -- Either continue, new game, options or credits

@@ -1,6 +1,6 @@
 Class = require 'libs.hump.class'
 
-SceneTitle = Class{__includes = Scene}
+SceneTitle = Class{__includes = SceneMenu}
 
 -- This scene corresponds to the title screens
 function SceneTitle:init()
@@ -18,6 +18,10 @@ function SceneTitle:init()
   self.titlesDuration = 4.6 -- In seconds
 
   music.tracks.shoot:play() -- Play some music, fam
+end
+
+function SceneTitle:HandleInput()
+  -- TODO handle this
 end
 
 function SceneTitle:update(dt)

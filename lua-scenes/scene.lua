@@ -10,8 +10,12 @@ function Scene:init()
   self.state = 0
 end
 
-function Scene:update(dt)
+function Scene:HandleInput(e)
+  -- Each scene type will handle input differently
+end
 
+function Scene:update(dt)
+  self:HandleInput("this is useless")
 end
 
 function Scene:draw()

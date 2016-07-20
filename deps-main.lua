@@ -14,9 +14,12 @@ require("lua-ctl.controller-keyboard") -- Keyboard compatibility
 require("lua-ctl.controller-xbox")     -- Xbox gamepad compat
 
 -- States and scenes
-require("game-state")             -- Class holding the game state (everything after starting new game)
-require("lua-scenes.scene-title") -- Scene for the titles and the "press start"
-require("lua-scenes.lua-menus.scene-mainmenu") -- Main Menu scene
+require("game-state")                          -- Class holding the game state (everything after starting new game)
+require("lua-scenes.scene")                    -- Base scene class
+require("lua-scenes.scene-menu")               -- Parent scene for screens that are handled as menus
+require("lua-scenes.scene-gamearea")           -- Parent scene for screens that are handled as playable
+require("lua-scenes.lua-menus.scene-title")    -- Scene for the titles and the "press start"
+require("lua-scenes.lua-menus.scene-mainmenu") -- Main menu scene (new, cont, opts etc)
 
 -- Direction and staging
 require("lua-staging.director")  -- The director that controls the waves :)
