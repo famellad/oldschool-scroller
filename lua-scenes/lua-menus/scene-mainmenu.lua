@@ -18,8 +18,8 @@ function SceneMainMenu:init()
 end
 
 function SceneMainMenu:update(dt)
-  -- Update main menu
-  self.optionsContainer:update(dt)
+  SceneMenu.update(self, dt)
+  self.optionsContainer.elements[1].text = "Continue " .. self.optionsContainer.selectedIndex
 end
 
 function SceneMainMenu:draw(dt)

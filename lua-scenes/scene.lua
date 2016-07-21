@@ -12,10 +12,12 @@ end
 
 function Scene:HandleInput(e)
   -- Each scene type will handle input differently
+  -- Yet, we always have to check the bind table
+  game.controller:checkBindTable()
 end
 
 function Scene:update(dt)
-  self:HandleInput("this is useless")
+  --self:HandleInput("this is useless")
 end
 
 function Scene:draw()

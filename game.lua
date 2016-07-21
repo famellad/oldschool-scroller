@@ -8,6 +8,7 @@ Game = Class{}
 --  2: Play scene
 
 function Game:init()
+  self.controller = Controller() -- Load Controller
   self.gs = GameState() -- initialize an EMPTY gamestate
   self.scene = SceneTitle() -- temporarily store just the title screen
   self.tmpState = 0 -- 0 is titles screen, do this temporarily
