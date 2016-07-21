@@ -17,6 +17,14 @@ function SceneMainMenu:init()
   self.optionsContainer:AddElement(GuiButton(0, 0, 4, "Quit Game"))
 end
 
+function SceneMainMenu:back()
+  game.scene = SceneTitle(2)
+end
+
+function SceneMainMenu:forward()
+
+end
+
 function SceneMainMenu:update(dt)
   SceneMenu.update(self, dt)
   self.optionsContainer.elements[1].text = "Continue " .. self.optionsContainer.selectedIndex

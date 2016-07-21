@@ -82,17 +82,18 @@ function Controller:handleInput (player)
   end
 end
 
-function Controller:doStart()
-  if game.tmpState == 0 then
-    if game.scene.state == 2 then
-      game.scene = SceneMainMenu()
-    else
-      game.scene.state = game.scene.state + 1
-    end
-  else
-    game.gs:pauseUnpause() -- TODO change this for "handleReturn"
-  end
-end
+-- Absolutely deprecated
+-- function Controller:doStart()
+  -- if game.tmpState == 0 then
+  --   if game.scene.state == 2 then
+  --     game.scene = SceneMainMenu()
+  --   else
+  --     game.scene.state = game.scene.state + 1
+  --   end
+  -- else
+  --   game.gs:pauseUnpause() -- TODO change this for "handleReturn"
+  -- end
+-- end
 
 -- TODO Handle presses that DO NOT repeat, via events
 -- TODO REWORK ALL THIS
@@ -117,8 +118,8 @@ function love.keypressed(key, isrepeat)
         quality = 0
       end
       love.setEffects()
-    elseif key == 'return' then
-      Controller.doStart()
+    --elseif key == 'return' then
+    --  Controller.doStart()
     elseif key == 'escape' then
       love.event.push('quit')
     end

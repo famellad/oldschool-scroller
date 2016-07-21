@@ -3,9 +3,12 @@ Class = require 'libs.hump.class'
 SceneTitle = Class{__includes = SceneMenu}
 
 -- This scene corresponds to the title screens
-function SceneTitle:init()
+function SceneTitle:init(initState)
+  -- A menu MUST have a container
+  self.optionsContainer = GuiContainer(0, 0)
+
   -- Current state of the title screen thingy
-  self.state = 0
+  self.state = initState
 
   self.imgBlk = love.graphics.newImage('gfx/titles/black.png')
   self.imgTIF = love.graphics.newImage('gfx/titles/thisisfine.png')
@@ -20,12 +23,18 @@ function SceneTitle:init()
   music.tracks.shoot:play() -- Play some music, fam
 end
 
-function SceneTitle:HandleInput()
-  -- TODO handle this
+function SceneTitle:forward()
+  if self.state == 2 then
+    game.scene = SceneMainMenu()
+  else
+    game.scene.state = game.scene.state + 1
+  end
 end
 
 function SceneTitle:update(dt)
-  -- Add to the timer and check whether the title has been for the right amount of time
+  SceneMenu.update(self, dt)
+
+  -- Adds to the timer and check whether the title has been for the right amount of time
   -- If it has, advance the state once and reset the timer
   self.currentStateDuration = self.currentStateDuration + 1 * dt -- Adds one per second
   if self.currentStateDuration >= self.titlesDuration and self.state < 2 then

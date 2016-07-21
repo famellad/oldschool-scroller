@@ -36,8 +36,8 @@ function Controller:xboxAttached()
   -- Not sure what to do with the right analog and the stick buttons
 end
 
-function love.gamepadpressed(joystick, button)
-  if button == 'start' then
-    Controller.doStart()
-  end
-end
+-- function love.gamepadpressed(joystick, button)
+--   if button == 'start' then
+--     Controller.doStart()
+--   end
+-- end

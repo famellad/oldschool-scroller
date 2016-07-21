@@ -16,6 +16,6 @@ function Controller:keyboardAttached()
   -- TODO Emulate RB
 
   -- Emulate Start/Select
-  -- self.butStart = love.keyboard.isDown('return')     -- Start
-  -- self.butSelect = love.keyboard.isDown('backspace') -- Back/Select
+  self.butStart = love.keyboard.isDown('return')     -- Start
+  self.butSelect = love.keyboard.isDown('backspace') -- Back/Select
 end

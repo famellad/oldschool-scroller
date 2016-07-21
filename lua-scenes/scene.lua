@@ -8,6 +8,7 @@ Scene = Class{}
 
 function Scene:init()
   self.state = 0
+  self.keyPressed = false
 end
 
 function Scene:HandleInput(e)
